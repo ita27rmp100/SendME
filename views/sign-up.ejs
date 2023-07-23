@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <title>SendMe | Sign up</title>
+    </head>
+    <body>
+        <div class="container position-relative" style="top:30px">
+            <div class="row justify-content-center align-items-center text-center">
+                <form class="card p-1 bg-light shadow" action="/sign-up" method="post">
+                    <div class="card-header border-bottom-0 bg-dark text-light">
+                        <h1>Sign up</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group mb-3">
+                            <div class="input-group-append InputTitle">
+                                <span class="input-group-text" id="basic-addon2">Username</span>
+                              </div>
+                            <input type="text" name="username" class="form-control InputTitle" required aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend InputTitle">
+                              <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                            </div>
+                            <input id="pw" type="password" minlength="6" name="password" class="form-control InputTitle" aria-label="Default" aria-describedby="inputGroup-sizing-default" data-toggle="tooltip" data-placement="bottom" data-original-title="password should contain more than 6 words" required>
+                        </div>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend InputTitle">
+                              <span class="input-group-text" id="inputGroup-sizing-default">Confirm &nbsp;</span>
+                            </div>
+                            <input type="password" id="cpw" minlength="6" name="ConfirmPassword" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                        </div>
+                        <small class="text-muted text-right">You already have an account ? <a href="/log-in">Log in</a></small>
+                    </div>
+                    <div class="card-footer justify-content-center ">
+                        <input type="submit" id="btnSubmit" value="sign up" class="btn btn-success text-light">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%- include('./master/scripts') %>
+        <script>
+            $('#btnSubmit').click(
+                function() {
+                    console.log(`your password : ${$('#pw').val()}`)
+                    console.log(`confirm password : ${$('#cpw').val()}`)
+                    if($('#pw').val() != $('#cpw')){
+                        alert('please , confirm your password correctly')
+                    }
+                }
+            )
+        </script>
+    </body>
+</html>

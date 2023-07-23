@@ -1,0 +1,17 @@
+body {
+  padding: 50px;
+  background:rgb(240, 240, 240);
+}
+.container.position-relative.sCard {
+  top: 50px;
+}
+/* input design */
+.InputTitle{
+  width:90px;
+}
+input{
+  outline:0px;
+}
+input:active{
+  outline:0px;
+}

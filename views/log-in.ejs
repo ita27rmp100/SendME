@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <title>SendMe | Log in</title>
+    </head>
+    <body>
+        <div class="container position-relative" style="top:30px">
+            <div class="row justify-content-center align-items-center text-center">
+                <form class="card p-1 bg-light shadow" action="/log-in" method="post">
+                    <div class="card-header border-bottom-0 bg-dark text-light">
+                        <h1>Log in</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group mb-3">
+                            <div class="input-group-append InputTitle">
+                                <span class="input-group-text" id="basic-addon2">Username</span>
+                              </div>
+                            <input type="text" name="username" class="form-control"aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend InputTitle">
+                              <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                            </div>
+                            <input type="password" name="password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <small class="text-muted text-right">You have not an account ? <a href="/sign-up">sign up</a></small>
+                    </div>
+                    <div class="card-footer justify-content-center ">
+                        <input type="submit" value="Log in" class="btn btn-success text-light">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%- include('./master/scripts') %>
+    </body>
+</html>
