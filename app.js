@@ -4,8 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
-const qs = require('querystring')
-const mysql = require('mysql')
+const qs = require('querystring');
+const mysql = require('mysql');
+const alert = require('alert-node');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -62,19 +63,19 @@ app.post('/log-in',(req,res)=>{
   })
   req.on('end',()=>{
     let result = qs.parse(body) , errorOrder = 'please refresh this page and try to log in agin .'
-    Connection.query(`select password from users where email = '${result.username}'`,function(error,queryResult,fields) {
-      try {
+    if (usersList.includes(result.username)){
+      Connection.query(`select password from users where email = '${result.username}'`,function(error,queryResult,fields) {
         password = queryResult[0].password
-      } catch (err) {
-        res.send(400).send(`this username doesn't exits .\n ${errorOrder}`)
-      }
-    })
-    if (password == result.password && usersList.includes(result.username)) {
-      req.session.login = true
-      res.redirect('/')
+        if (result.password==password) {
+          req.session.login = true
+          res.redirect('/')
+        } else {
+          alert('Your password is incorrect .');
+        }
+      })
     }
     else {
-        res.status(400).send(`Sorry , You password is incorrect .\n ${errorOrder}`)
+      alert("this username doesn't exist");
     }
   }
     // console.log(password)

@@ -6,13 +6,18 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "alert-node": "^5.0.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
+    "emitter": "^0.0.5",
     "express": "~4.16.1",
     "express-session": "^1.17.3",
     "http-errors": "~1.6.3",
+    "inherit": "^2.2.7",
     "morgan": "~1.9.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "popup": "^0.0.3",
+    "popups": "^1.1.3"
   }
 }
