@@ -62,7 +62,7 @@ app.post('/log-in',(req,res)=>{
     body = body + data
   })
   req.on('end',()=>{
-    let result = qs.parse(body) , errorOrder = 'please refresh this page and try to log in agin .'
+    let result = qs.parse(body) , errorOrder = 'try log-in into this website again please .'
     if (usersList.includes(result.username)){
       Connection.query(`select password from users where email = '${result.username}'`,function(error,queryResult,fields) {
         password = queryResult[0].password
@@ -70,12 +70,12 @@ app.post('/log-in',(req,res)=>{
           req.session.login = true
           res.redirect('/')
         } else {
-          alert('Your password is incorrect .');
+          res.status(400).send('Your password is incorrect , ' + errorOrder);
         }
       })
     }
     else {
-      alert("this username doesn't exist");
+      res.status(400).send("this username doesn't exist , " + errorOrder);
     }
   }
     // console.log(password)
