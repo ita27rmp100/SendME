@@ -69,10 +69,6 @@ app.post('/log-in',(req,res)=>{
         res.send(400).send(`this username doesn't exits .\n ${errorOrder}`)
       }
     })
-    // if (usersList.includes(result.username)) {
-    //   req.session.login = true
-    //   res.redirect('/')
-    // } 
     if (password == result.password && usersList.includes(result.username)) {
       req.session.login = true
       res.redirect('/')
