@@ -45,6 +45,7 @@ app.post('/sign-up',(req,res)=>{
         Connection.query(`insert into users()values('${result.username}','${result.password}')`)
         Connection.query(`create table ${result.username}(name varchar(50) primary key , message varchar(1000))`)
         req.session.login = true
+        req.session.username = result.username
         res.redirect('/')
       }
       else if(usersList.includes(result.username)){
@@ -68,6 +69,7 @@ app.post('/log-in',(req,res)=>{
         password = queryResult[0].password
         if (result.password==password) {
           req.session.login = true
+          req.session.username = result.username
           res.redirect('/')
         } else {
           res.status(400).send('Your password is incorrect , ' + errorOrder);
