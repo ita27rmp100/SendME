@@ -16,18 +16,49 @@
               <br>
             This website is to share secret messages with your close freinds .
           </p>
+          <div class="input-group mb-3 flex-column">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-back" viewBox="0 0 16 16">
+                  <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2z"/>
+                </svg>
+              </span>
+              <input id="link" type="text" class="form-control" placeholder="Get your link" aria-label="Username" aria-describedby="basic-addon1" value="SendMe/rahimo09" data-toggle="tooltip" data-placement="bottom" data-original-title="Share your link with the others ." readonly>
+            </div>
+            <input type="submit" value="Log out" class="btn btn-outline-dark float-right right m-5 w-25 align-self-end">
+          </div>
         </div>
+        <!-- log out button -->
+        
         <!-- This div is to to show what poeple have sent to you -->
         <div class="col">
           <table class="table table-bordered table-striped table-hover">
-            <tr>
-              <th>from :</th>
-              <th>message :</th>
-            </tr>
+            <thead>
+              <tr>
+                <th>from :</th>
+                <th>message :</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
           </table>
         </div>
       </div>
     </div>
   </body>
   <%- include('./master/scripts') %>
+  <script>
+    $(document).ready(
+      function() {
+        $('#link').click(
+          function(){
+            window.location = $(this).val()
+          }
+        )
+        $('tbody').html(decodeURIComponent('<%- escape(MT) %>'))
+        console.log(decodeURIComponent('<%- escape(MT) %>'))
+      }
+    )
+  </script>
 </html>

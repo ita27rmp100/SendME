@@ -6,7 +6,6 @@ var logger = require('morgan');
 const session = require('express-session');
 const qs = require('querystring');
 const mysql = require('mysql');
-const alert = require('alert-node');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -22,7 +21,7 @@ let Connection = mysql.createConnection({
   password:'',
   database:'sendme'
 })
-var usersList , messege
+var usersList
 Connection.query('select email from users',function(error,results,fields) {
   usersList = results.map(row => row.email);
   console.log(usersList)
@@ -115,5 +114,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = messege
+// module.exports = messege
 module.exports = app;
