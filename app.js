@@ -82,6 +82,11 @@ app.post('/log-in',(req,res)=>{
     // console.log(password)
   )
 })
+  // log out
+app.post('/',(req,res)=>{
+  req.session.login = false
+  res.redirect('/log-in')
+})
 // static pages 
 app.use(express.static('public'));
 // view engine setup

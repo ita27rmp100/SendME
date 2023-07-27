@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET sign-up page. */
 router.get('/', function(req, res, next) {
-  if (!req.session.login) {
+  const login = req.session.login;
+  if (!req.session.login || !login) {
     res.render('log-in')
   } else {
     res.redirect('/')
