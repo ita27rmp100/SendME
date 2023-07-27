@@ -10,7 +10,8 @@ const mysql = require('mysql');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var SignUP_Router = require('./routes/sign-up');
-var LogIN_Router = require('./routes/log-in')
+var LogIN_Router = require('./routes/log-in');
+var SendTo = require('./routes/send')
 
 var app = express();
 
@@ -102,7 +103,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/',indexRouter);
 app.use('/users',usersRouter);
 app.use('/sign-up',SignUP_Router);
-app.use('/log-in',LogIN_Router)
+app.use('/log-in',LogIN_Router);
+app.use('/send/:to',SendTo)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

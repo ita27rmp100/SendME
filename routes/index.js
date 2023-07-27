@@ -23,7 +23,6 @@ router.get('/', function(req, res, next) {
                   </tr>`
         MessagesTable += message
       }
-      console.log(MessagesTable)
       res.render(
         'index', 
         { title: `SendMe | ${req.session.username}`,

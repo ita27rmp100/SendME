@@ -15,3 +15,6 @@ input{
 input:active{
   outline:0px;
 }
+textarea{
+  resize: none;
+}
