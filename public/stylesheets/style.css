@@ -1,9 +1,12 @@
 body {
-  padding: 50px;
   background:rgb(240, 240, 240);
 }
-.container.position-relative.sCard {
-  top: 50px;
+*{
+  font-family: 'Roboto', sans-serif;
+}
+.navHomePAge{
+  padding: 50px;
+  padding-top:25px;
 }
 /* input design */
 .InputTitle{
@@ -17,4 +20,11 @@ input:active{
 }
 textarea{
   resize: none;
+}
+/* Button like link in navbar */
+.link{
+  background: transparent;
+  border: none;
+  padding: 0px;
+  cursor: pointer;
 }

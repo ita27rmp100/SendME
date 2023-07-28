@@ -4,9 +4,11 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="icon" href="/images/SendMe_logo.png" type="image/png">
   </head>
   <body class="lead">
-    <div class="container-fluid">
+    <%- include('./master/navbar.ejs') %>
+    <nav class="container-fluid navHomePAge">
       <div class="row">
         <!-- greeting / getting the link to receive messages -->
         <div class="col">
@@ -23,12 +25,11 @@
                   <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2z"/>
                 </svg>
               </span>
-              <input id="link" type="text" class="form-control" placeholder="Get your link" aria-label="Username" aria-describedby="basic-addon1" value="SendMe/rahimo09" data-toggle="tooltip" data-placement="bottom" data-original-title="Share your link with the others ." readonly>
+              <input id="link" type="text" class="form-control" placeholder="Get your link" aria-label="Username" aria-describedby="basic-addon1" value="send/<%=username %>" data-toggle="tooltip" data-placement="bottom" data-original-title="Share your link with the others ." readonly>
             </div>
             <form action="/" method="post">
               <input type="submit" value="Log out" id="logOut" class="btn btn-outline-dark float-right right m-5 w-25 align-self-end">
             </form>
-            
           </div>
         </div>
         <!-- This div is to to show what poeple have sent to you -->
@@ -46,7 +47,7 @@
           </table>
         </div>
       </div>
-    </div>
+    </nav>
   </body>
   <%- include('./master/scripts') %>
   <script>

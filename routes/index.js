@@ -15,7 +15,6 @@ router.get('/', function(req, res, next) {
       // messages = result
       messages = JSON.parse(JSON.stringify(result))
       MessagesTable = ''
-      console.log(messages) 
       for (let i = 0; i < messages.length; i++) {
         message = `<tr>
                       <td>${messages[i].name}</td>

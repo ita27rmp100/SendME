@@ -11,7 +11,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var SignUP_Router = require('./routes/sign-up');
 var LogIN_Router = require('./routes/log-in');
-var SendTo = require('./routes/send')
+var SendTo = require('./routes/send');
+const { ppid } = require('process');
 
 var app = express();
 
@@ -88,6 +89,24 @@ app.post('/',(req,res)=>{
   req.session.login = false
   res.redirect('/log-in')
 })
+  // Send Message
+app.post('/send',(req,res)=>{
+  let body = ''
+  req.on('data',(data)=>{
+    body += data
+  })
+  req.on('end',()=>{
+    let result = qs.parse(body)
+    console.log(result)
+    Connection.query(`insert into ${result.to}() value('${result.from}','${result.message}')`,function(err,queryResult,fields) {
+      try {
+        res.redirect('/')
+      } catch (error) {
+        res.status(400)
+      }
+    })
+  })
+})
 // static pages 
 app.use(express.static('public'));
 // view engine setup
@@ -104,7 +123,7 @@ app.use('/',indexRouter);
 app.use('/users',usersRouter);
 app.use('/sign-up',SignUP_Router);
 app.use('/log-in',LogIN_Router);
-app.use('/send/:to',SendTo)
+app.use('/send',SendTo)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

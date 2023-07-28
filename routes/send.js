@@ -2,16 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  let fromValue 
-  if (req.session.login) {
-    fromValue = req.session.username
-  } else {
-    fromValue = "From ( optional )"
-  }
+router.get('/:to?', function(req, res, next) {
   res.render('send',{
-    fromValue:fromValue
-  });
+    fromValue:req.session.username || 'Unknown',
+    toValue:req.params.to ,
+    logIN:req.session.login
+  })
 });
 
 module.exports = router;
