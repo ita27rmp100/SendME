@@ -18,16 +18,25 @@ var app = express();
 
 // Connection with database
 let Connection = mysql.createConnection({
-  host:'localhost',
+  host:'127.0.0.1',
   user:'root',
   password:'',
   database:'sendme'
 })
-var usersList
-Connection.query('select email from users',function(error,results,fields) {
-  usersList = results.map(row => row.email);
+var usersList = {}, usernames , passowrds 
+function gettingUsers(){
+  Connection.query('select * from users',function(error,results,fields) {
+  console.log("connected succefully");
+  usernames = results.map(row => row.username)
+  passowrds = results.map(row => row.password)
+  console.log(usernames,passowrds)
+  for(i=0;i<(Object.keys(usernames).length);i++){
+    usersList[usernames[i]]=passowrds[i]
+  }
   console.log(usersList)
 })
+}
+gettingUsers()
 // sessions 
   // Set up session middleware
 app.use(session({
@@ -42,46 +51,51 @@ app.post('/sign-up',(req,res)=>{
   })
   req.on('end',()=>{
       let result = qs.parse(body)
-      if (result.password==result.ConfirmPassword && !(usersList.includes(result.username))) {
-        Connection.query(`insert into users()values('${result.username}','${result.password}')`)
-        Connection.query(`create table ${result.username}(name varchar(50) primary key , message varchar(1000))`)
+      gettingUsers()
+      if (result.password==result.ConfirmPassword && !(result.username in usersList)) {
+        Connection.query(`insert into users(username, password) value('${result.username}','${result.password}')`)
+        Connection.query(`create table ${result.username}(date varchar(11),message varchar(1000))`)
         req.session.login = true
         req.session.username = result.username
         res.redirect('/')
+        gettingUsers()
       }
-      else if(usersList.includes(result.username)){
-        res.status(400).send('Something happend wrong , you may wanted to sign up with a taken username')
-      }
-      else if(result.password!=result.ConfirmPassword){
-        res.redirect('/sign-up')
+      else{
+        if(result.username in usersList){
+          res.status(400).send('Something happend wrong , you may wanted to sign up with a taken username')
+        }
+        else if(result.password!=result.ConfirmPassword){
+          res.redirect('/sign-up')
+        }
       }
   })
 })
   // log in
 app.post('/log-in',(req,res)=>{
+  gettingUsers()
   let body = '' , password
   req.on('data',(data)=>{
     body = body + data
   })
   req.on('end',()=>{
     let result = qs.parse(body) , errorOrder = 'try log-in into this website again please .'
-    if (usersList.includes(result.username)){
-      Connection.query(`select password from users where email = '${result.username}'`,function(error,queryResult,fields) {
-        password = queryResult[0].password
-        if (result.password==password) {
-          req.session.login = true
-          req.session.username = result.username
-          res.redirect('/')
-        } else {
-          res.status(400).send('Your password is incorrect , ' + errorOrder);
-        }
-      })
+    console.log(result.username,'\n',result.password)
+    console.log(result.username in usersList)
+    console.log(result.password == usersList[result.username])
+    if(result.username in usersList){
+      if(result.password == usersList[result.username]){
+        console.log('log in succefully !')
+        req.session.login = true
+        req.session.username = result.username
+        res.redirect('/')
+      }else{
+        res.status(400).send('Your password is incorrect , ' + errorOrder);
+      }
     }
-    else {
-      res.status(400).send("this username doesn't exist , " + errorOrder);
+    else{
+      res.status(400).send('Your password is incorrect , ' + errorOrder);
     }
   }
-    // console.log(password)
   )
 })
   // log out
@@ -97,8 +111,13 @@ app.post('/send',(req,res)=>{
   })
   req.on('end',()=>{
     let result = qs.parse(body)
+    let date = new Date()
+    let dateSend = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`
     console.log(result)
-    Connection.query(`insert into ${result.to}() value('${result.from}','${result.message}')`,function(err,queryResult,fields) {
+    console.log(result.to)
+    console.log(result.message)
+    console.log(dateSend)
+    Connection.query(`insert into ${result.to}() value('${dateSend}','${result.message}')`,function(err,queryResult,fields) {
       try {
         res.redirect('/')
       } catch (error) {

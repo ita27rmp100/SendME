@@ -14,7 +14,7 @@
         <div class="col">
           <h1>SendMe</h1>
           <p class="text-muted">
-            Welcome <b><%= username %></b> to our website.
+            Welcome <b class="text-dark">" <%= username %> "</b> to our website.
               <br>
             This website is to share secret messages with your close freinds .
           </p>
@@ -37,7 +37,7 @@
           <table class="table table-bordered table-striped table-hover">
             <thead>
               <tr>
-                <th>from :</th>
+                <th>Date :</th>
                 <th>message :</th>
               </tr>
             </thead>
@@ -59,7 +59,10 @@
           }
         )
         $('tbody').html(decodeURIComponent('<%- escape(MT) %>'))
-      }
-    )
+      })
+      $(".navbar-toggler").click(function() {
+        // Toggle the dropdown menu with a slide and fade effect
+        $("#navbarDropdownToggle").stop(true, true).slideToggle(300).fadeToggle(300);
+    });
   </script>
 </html>

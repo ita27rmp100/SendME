@@ -4,7 +4,6 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/:to?', function(req, res, next) {
   res.render('send',{
-    fromValue:req.session.username || 'Unknown',
     toValue:req.params.to ,
     logIN:req.session.login
   })

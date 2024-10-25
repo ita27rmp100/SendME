@@ -48,8 +48,12 @@
                 function() {
                     console.log(`your password : ${$('#pw').val()}`)
                     console.log(`confirm password : ${$('#cpw').val()}`)
-                    if($('#pw').val() != $('#cpw')){
+                    console.log($('#pw').val() != $('#cpw').val())
+                    if($('#pw').val() != $('#cpw').val()){
                         alert('please , confirm your password correctly')
+                    }
+                    else{
+                        alert('Registration is successful, you will be directed to the home page now')
                     }
                 }
             )
