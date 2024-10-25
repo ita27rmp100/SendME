@@ -26,14 +26,11 @@ let Connection = mysql.createConnection({
 var usersList = {}, usernames , passowrds 
 function gettingUsers(){
   Connection.query('select * from users',function(error,results,fields) {
-  console.log("connected succefully");
   usernames = results.map(row => row.username)
   passowrds = results.map(row => row.password)
-  console.log(usernames,passowrds)
   for(i=0;i<(Object.keys(usernames).length);i++){
     usersList[usernames[i]]=passowrds[i]
   }
-  console.log(usersList)
 })
 }
 gettingUsers()
@@ -79,12 +76,8 @@ app.post('/log-in',(req,res)=>{
   })
   req.on('end',()=>{
     let result = qs.parse(body) , errorOrder = 'try log-in into this website again please .'
-    console.log(result.username,'\n',result.password)
-    console.log(result.username in usersList)
-    console.log(result.password == usersList[result.username])
     if(result.username in usersList){
       if(result.password == usersList[result.username]){
-        console.log('log in succefully !')
         req.session.login = true
         req.session.username = result.username
         res.redirect('/')
@@ -113,10 +106,6 @@ app.post('/send',(req,res)=>{
     let result = qs.parse(body)
     let date = new Date()
     let dateSend = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`
-    console.log(result)
-    console.log(result.to)
-    console.log(result.message)
-    console.log(dateSend)
     Connection.query(`insert into ${result.to}() value('${dateSend}','${result.message}')`,function(err,queryResult,fields) {
       try {
         res.redirect('/')
