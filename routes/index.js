@@ -14,7 +14,6 @@ router.get('/', function(req, res, next) {
     console.log(req.session.username)
     Connection.query(`select * from ${req.session.username}`,function(error,result,fields){
       messages = result
-      console.log(messages)
       // messages = JSON.parse(JSON.stringify(result))
       MessagesTable = ''
       try {
