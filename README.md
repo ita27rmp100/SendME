@@ -15,5 +15,9 @@
 <hr>
 <b>Some images of the website's layout : </b>
 <a type="button" class="btn btn-dark" href="https://drive.google.com/drive/folders/1Mo4ziscNAXeBvlOTazxsqgvxxV9tCr0-?usp=sharing">Click here</a>
+<b>video in my YouTube channel about this project :</b>
+<a href="https://youtu.be/pRGEIKH6eqk?si=WJLjDaotGOT-wRB4">Click here</a>
+
+<h6>I will share you this week a link to try and teat this website - inshallah - </h6>
 
 <h5>Please , gimme a star 😚🤗</h5>
