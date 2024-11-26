@@ -3,6 +3,7 @@ body {
 }
 *{
   font-family: 'Roboto', sans-serif;
+  transition: all 1s;
 }
 .navHomePAge{
   padding: 50px;
@@ -27,4 +28,40 @@ textarea{
   border: none;
   padding: 0px;
   cursor: pointer;
+}
+
+/* header tag design */
+header{
+  border-radius:8px;
+  width:max-content;
+  position:absolute;
+  top:5px;
+  left:5px;
+  overflow: hidden;
+  height:50px;
+  width:50px;
+  margin-bottom: 5px;
+  z-index:55000;
+}
+.lead{
+  position: relative;
+  tp[ 50p]
+}
+.head{
+  gap:15px;
+}
+img{
+  width: 50px;
+  position: relative;
+  top: -8px;
+  left: -16px;
+}
+ul{
+  list-style: none;
+  text-align:left;
+  padding-left: 0px;
+}
+a{
+  text-decoration: none;
+  text-decoration: none;
 }

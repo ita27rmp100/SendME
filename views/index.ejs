@@ -8,16 +8,14 @@
   </head>
   <body class="lead">
     <%- include('./master/navbar.ejs') %>
-    <nav class="container-fluid navHomePAge">
+    <nav class="container-fluid navHomePAge pt-3 p-5">
       <div class="row">
         <!-- greeting / getting the link to receive messages -->
         <div class="col">
-          <h1>SendMe</h1>
-          <p class="text-muted">
-            Welcome <b class="text-dark">" <%= username %> "</b> to our website.
-              <br>
-            This website is to share secret messages with your close freinds .
-          </p>
+          <h3 class="text-muted">
+            Welcome <b class="text-dark">" <%= username %> "</b> 
+          </h3>
+          <h1>to SendMe</h1>
           <div class="input-group mb-3 flex-column">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">
