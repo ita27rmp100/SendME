@@ -72,9 +72,19 @@ a{
   text-align: center;
 }
   /* message style */
-.message{
+.message {
   display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border-top: 1px solid gray;
+  flex-direction: row;
+  justify-content: space-around;
+  border-left: 10px solid gray;
+  border-bottom: 3px;
+}
+.elem-mdg{
+  width:100%;
+}
+.elem-date{
+  position: absolute;
+    font-size: 12px;
+    bottom: 5px;
+    right: 30px;
 }
