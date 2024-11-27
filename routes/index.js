@@ -18,10 +18,10 @@ router.get('/', function(req, res, next) {
       MessagesTable = ''
       try {
         for (let i = 0; i <(Object.keys(messages).length); i++) {
-          message = `<tr>
-                        <td>${messages[i].date}</td>
-                        <td>${messages[i].message}</td>
-                    </tr>`
+          message = `<div class="message">
+                        <b>${messages[i].date}</b>
+                        <p>${messages[i].message}</p>
+                    </div>`
           MessagesTable += message
         }
       } catch (error) {

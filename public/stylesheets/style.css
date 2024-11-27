@@ -2,7 +2,7 @@ body {
   background:rgb(240, 240, 240);
 }
 *{
-  font-family: 'Roboto', sans-serif;
+  font-family: cursive;
   transition: all 1s;
 }
 .navHomePAge{
@@ -45,7 +45,6 @@ header{
 }
 .lead{
   position: relative;
-  tp[ 50p]
 }
 .head{
   gap:15px;
@@ -64,4 +63,18 @@ ul{
 a{
   text-decoration: none;
   text-decoration: none;
+}
+/* messages list */
+.header-msg{
+  background:linear-gradient(90deg, rgba(24,10,18,1) 0%, rgba(73,39,59,0.9996790952709209) 51%, rgba(56,50,54,1) 75%, rgba(60,37,50,1) 100%);
+  font-family: cursive;
+  font-size: 20px;
+  text-align: center;
+}
+  /* message style */
+.message{
+  display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-top: 1px solid gray;
 }
