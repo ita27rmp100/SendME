@@ -74,17 +74,16 @@ a{
   /* message style */
 .message {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border-left: 10px solid gray;
-  border-bottom: 3px;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  border-top: 1px solid gray;
 }
-.elem-mdg{
+.elem-msg{
   width:100%;
 }
 .elem-date{
-  position: absolute;
+  position: relative;
     font-size: 12px;
-    bottom: 5px;
-    right: 30px;
+    bottom: -30px;
+    right: 35px;
 }

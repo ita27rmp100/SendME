@@ -18,9 +18,9 @@ router.get('/', function(req, res, next) {
       MessagesTable = ''
       try {
         for (let i = 0; i <(Object.keys(messages).length); i++) {
-          message = `<div class="message">
-                        <b class='elem-msg'>${messages[i].date}</b>
-                        <p class='elem-date'>${messages[i].message}</p>
+          message = `<div class="message px-2 py-1">
+                        <b class='elem-date'>${messages[i].date}</b>
+                        <p class='elem-msg'>${messages[i].message}</p>
                     </div>`
           MessagesTable += message
         }

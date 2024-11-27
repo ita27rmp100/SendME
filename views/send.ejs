@@ -9,13 +9,14 @@
         <title>SendMe | Send message</title>
     </head>
     <body class="lead">
+        
         <% if (logIN) { %>
-         <%- include('./master/navbar.ejs') %>
+            <%- include('./master/navbar.ejs') %>
         <% } %>
         <div class="container position-relative" style="top:30px">
             <div class="row justify-content-center align-items-center text-center p-3">
-                <form class="card p-1 bg-light shadow" action="/send" method="post">
-                    <div class="card-header border-bottom-0 bg-dark text-light header-msg">
+                <form class="card bg-light shadow" action="/send" method="post">
+                    <div class="card-header border-bottom-0 text-light header-msg">
                         <h4>Send them anonymous message!</h4>
                     </div>
                     <div class="card-body text-left">

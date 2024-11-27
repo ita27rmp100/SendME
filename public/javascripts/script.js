@@ -4,7 +4,7 @@ if ($('#pw').text()!=$('#ConfirmPW').text()) {
 let width_height = [
     {
         width:"350px",
-        height:"225px"
+        height:"230px"
     },
     {
         width:"50px",
