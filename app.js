@@ -34,6 +34,7 @@ function gettingUsers(){
 })
 }
 gettingUsers()
+console.log(usersList)
 // sessions 
   // Set up session middleware
 app.use(session({
